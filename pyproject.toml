@@ -1,7 +1,43 @@
 [project]
-name = "agh-mlops-lab11"
-version = "0.1.0"
-description = "Add your description here"
+name = "MLOps_course_AGH_lab_11"
+version = "1.0.0"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+requires-python = ">=3.11"
+
+dependencies = [
+    "numpy>=1.24.0",
+]
+
+[dependency-groups]
+integration = [
+    "pytest>=7.0.0",
+    "ruff>=0.1.0",
+]
+deployment = [
+    "boto3>=1.34.0",
+    "skl2onnx>=1.16.0",
+    "onnx>=1.15.0",
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "joblib>=1.3.0",
+    "pydantic>=2.12.4",
+]
+inference = [
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "onnxruntime>=1.16.0",
+    "tokenizers>=0.15.0",
+    "mangum>=0.17.0",
+    "awslambdaric>=1.5.0",
+    "pydantic>=2.12.4",
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu121", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
