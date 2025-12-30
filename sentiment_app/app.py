@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from mangum import Mangum
 from src.scripts.settings import Settings
 from src.inference import SentimentAnalyzer
 
@@ -10,6 +11,7 @@ app = FastAPI()
 
 analyzer = SentimentAnalyzer(settings=settings)
 
+handler = Mangum(app)
 
 @app.get("/")
 def root():

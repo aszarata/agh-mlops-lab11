@@ -28,4 +28,7 @@ COPY api ./api
 COPY model ./model
 
 # Run the application
-CMD ["uvicorn", "sentiment_app.app:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["uvicorn", "sentiment_app.app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+ENTRYPOINT ["python", "-m", "awslambdaric"]
+CMD ["app.handler"]
