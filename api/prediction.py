@@ -4,4 +4,4 @@ class PredictRequest(BaseModel):
     text: str
 
 class PredictResponse(BaseModel):
-    inference_time: float
+    sentiment: str
